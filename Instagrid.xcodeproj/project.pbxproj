@@ -15,6 +15,7 @@
 		D564CFCE2235D63E00721B9F /* Delm-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = D564CFCC2235D63E00721B9F /* Delm-Medium.otf */; };
 		D564CFD02235E3E900721B9F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D564CFCF2235E3E900721B9F /* Assets.xcassets */; };
 		D59E480F223707FD00F45548 /* ImageGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D59E480E223707FD00F45548 /* ImageGridView.swift */; };
+		D5E753F7223DBF1B0087E6C7 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E753F6223DBF1B0087E6C7 /* UIView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		D564CFCC2235D63E00721B9F /* Delm-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Delm-Medium.otf"; sourceTree = "<group>"; };
 		D564CFCF2235E3E900721B9F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D59E480E223707FD00F45548 /* ImageGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageGridView.swift; sourceTree = "<group>"; };
+		D5E753F6223DBF1B0087E6C7 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +62,7 @@
 		D564CFB422357E4100721B9F /* Instagrid */ = {
 			isa = PBXGroup;
 			children = (
+				D5E753F5223DBF040087E6C7 /* Extensions */,
 				D564CFCA2235D5E500721B9F /* Supporting Files */,
 				D564CFC92235D5A300721B9F /* View */,
 				D564CFC82235D59E00721B9F /* Model */,
@@ -103,6 +106,14 @@
 				D564CFC122357E4300721B9F /* Info.plist */,
 			);
 			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D5E753F5223DBF040087E6C7 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				D5E753F6223DBF1B0087E6C7 /* UIView.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -178,6 +189,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D5E753F7223DBF1B0087E6C7 /* UIView.swift in Sources */,
 				D59E480F223707FD00F45548 /* ImageGridView.swift in Sources */,
 				D564CFB822357E4100721B9F /* ViewController.swift in Sources */,
 				D564CFB622357E4100721B9F /* AppDelegate.swift in Sources */,

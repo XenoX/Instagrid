@@ -336,6 +336,8 @@
                         </variation>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="PeI-aF-Qty" appends="YES" id="MRU-q1-R8q"/>
+                            <outletCollection property="gestureRecognizers" destination="pZ1-Er-IHR" appends="YES" id="Paf-qd-aXA"/>
+                            <outletCollection property="gestureRecognizers" destination="68Z-Jr-2bx" appends="YES" id="T1a-zm-DiG"/>
                         </connections>
                     </view>
                     <connections>
@@ -356,6 +358,17 @@
                         <outlet property="delegate" destination="oe2-82-DLf" id="nXI-Gz-x00"/>
                     </connections>
                 </pongPressGestureRecognizer>
+                <swipeGestureRecognizer direction="up" id="pZ1-Er-IHR" userLabel="Swipe Up Gesture Recognizer">
+                    <connections>
+                        <action selector="swipeForShare:" destination="BYZ-38-t0r" id="O9D-pF-73R"/>
+                        <outlet property="delegate" destination="8bC-Xf-vdC" id="Djr-Pm-hYA"/>
+                    </connections>
+                </swipeGestureRecognizer>
+                <swipeGestureRecognizer direction="left" id="68Z-Jr-2bx" userLabel="Swipe Left Gesture Recognizer">
+                    <connections>
+                        <action selector="swipeForShare:" destination="BYZ-38-t0r" id="OdH-7p-bos"/>
+                    </connections>
+                </swipeGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="50.223214285714285" y="26.086956521739133"/>
         </scene>

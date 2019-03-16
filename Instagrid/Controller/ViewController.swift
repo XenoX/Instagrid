@@ -6,6 +6,17 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     @IBOutlet var gridImageViews: [UIImageView]!
     @IBOutlet weak var imageGridView: ImageGridView!
 
+    var imagePicker = UIImagePickerController()
+
+    @IBAction func swipeForShare(_ sender: UISwipeGestureRecognizer) {
+        if (UIDevice.current.orientation.isLandscape && sender.direction == .left) ||
+            (UIDevice.current.orientation.isPortrait && sender.direction == .up)
+        {
+            let share = UIActivityViewController(activityItems: [imageGridView.image!], applicationActivities: nil)
+            present(share, animated: true)
+        }
+    }
+
     @IBAction func didLongPressLayoutButton(_ sender: UILongPressGestureRecognizer) {
         guard sender.state == .began else {
             return
@@ -25,11 +36,6 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
 
         imageGridView.imageTarget = sender.tag - 1
 
-        let imagePicker = UIImagePickerController()
-        imagePicker.delegate = self
-        imagePicker.sourceType = .photoLibrary
-        imagePicker.allowsEditing = false
-
         self.present(imagePicker, animated: true)
     }
 
@@ -38,14 +44,16 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
 
         resetLayoutButtons()
         selectLayoutButton(sender)
-
-        resetImageViews()
         
         imageGridView.setLayout(sender.tag)
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        imagePicker.delegate = self
+        imagePicker.sourceType = .photoLibrary
+        imagePicker.allowsEditing = false
     }
 
     private func resetImageViews() {
