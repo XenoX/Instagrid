@@ -178,6 +178,7 @@
                                 <subviews>
                                     <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VBr-Rc-iNp" userLabel="Layout 1">
                                         <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                                        <gestureRecognizers/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="80" id="IEl-Nm-4Nf"/>
                                             <constraint firstAttribute="height" constant="80" id="TvZ-HG-2Vn"/>
@@ -256,6 +257,7 @@
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" red="0.71764705882352942" green="0.84313725490196079" blue="0.89803921568627454" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="Kto-oe-5xi" firstAttribute="centerX" secondItem="OKu-S0-k6l" secondAttribute="centerX" id="3Jf-lA-ay0"/>
                             <constraint firstItem="oe2-82-DLf" firstAttribute="trailing" secondItem="OKu-S0-k6l" secondAttribute="trailing" id="5Zs-bR-UfS"/>
@@ -332,6 +334,9 @@
                                 <include reference="x6E-LO-gG7"/>
                             </mask>
                         </variation>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="PeI-aF-Qty" appends="YES" id="MRU-q1-R8q"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="imageGridView" destination="OKu-S0-k6l" id="RIb-cP-CMG"/>
@@ -345,6 +350,12 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.69999999999999996" id="PeI-aF-Qty">
+                    <connections>
+                        <action selector="didLongPressLayoutButton:" destination="BYZ-38-t0r" id="31D-iC-xjU"/>
+                        <outlet property="delegate" destination="oe2-82-DLf" id="nXI-Gz-x00"/>
+                    </connections>
+                </pongPressGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="50.223214285714285" y="26.086956521739133"/>
         </scene>

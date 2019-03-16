@@ -6,6 +6,14 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     @IBOutlet var gridImageViews: [UIImageView]!
     @IBOutlet weak var imageGridView: ImageGridView!
 
+    @IBAction func didLongPressLayoutButton(_ sender: UILongPressGestureRecognizer) {
+        guard sender.state == .began else {
+            return
+        }
+
+        resetImageViews()
+    }
+
     @IBAction func didTapUploadButton(_ sender: UIButton) {
         let imageView = gridImageViews[sender.tag - 1]
 
