@@ -1,21 +1,54 @@
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
 
     @IBOutlet var layoutButtons: [UIButton]!
+    @IBOutlet var gridImageViews: [UIImageView]!
     @IBOutlet weak var imageGridView: ImageGridView!
 
+    @IBAction func didTapUploadButton(_ sender: UIButton) {
+        let imageView = gridImageViews[sender.tag - 1]
+
+        if imageView.contentMode == .scaleToFill {
+            removeImageFromImageView(imageView)
+
+            return
+        }
+
+        imageGridView.imageTarget = sender.tag - 1
+
+        let imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        imagePicker.sourceType = .photoLibrary
+        imagePicker.allowsEditing = false
+
+        self.present(imagePicker, animated: true)
+    }
+
     @IBAction func didTapLayoutButton(_ sender: UIButton) {
+        guard sender.isSelected == false else { return }
+
         resetLayoutButtons()
         selectLayoutButton(sender)
+
+        resetImageViews()
         
         imageGridView.setLayout(sender.tag)
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
 
-        setStyle()
+    private func resetImageViews() {
+        gridImageViews.forEach { imageView in
+            removeImageFromImageView(imageView)
+        }
+    }
+
+    private func removeImageFromImageView(_ imageView: UIImageView) {
+        imageView.contentMode = .center
+        imageView.image = UIImage.init(named: "Plus")
     }
 
     private func resetLayoutButtons() {
@@ -30,9 +63,12 @@ class ViewController: UIViewController {
         layoutButton.setImage(UIImage.init(named: "Selected"), for: .selected)
     }
 
-    private func setStyle() {
-        imageGridView.layer.shadowColor = UIColor.black.cgColor
-        imageGridView.layer.shadowOffset = CGSize(width: 0, height: 2)
-        imageGridView.layer.shadowOpacity = 0.8
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            gridImageViews[imageGridView.imageTarget].image = image
+            gridImageViews[imageGridView.imageTarget].contentMode = .scaleAspectFill
+        }
+
+        self.dismiss(animated: true, completion: nil)
     }
 }
