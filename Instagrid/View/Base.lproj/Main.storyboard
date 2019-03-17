@@ -47,7 +47,7 @@
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sko-CO-rWI" userLabel="Top Left View">
                                                         <rect key="frame" x="0.0" y="0.0" width="160" height="160"/>
                                                         <subviews>
-                                                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N9x-6g-beo" userLabel="Upload Button">
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N9x-6g-beo" userLabel="Upload Button">
                                                                 <rect key="frame" x="0.0" y="0.0" width="160" height="160"/>
                                                                 <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
                                                                 <connections>
@@ -73,7 +73,7 @@
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="owa-P3-EBn" userLabel="Top Right View">
                                                         <rect key="frame" x="170" y="0.0" width="160" height="160"/>
                                                         <subviews>
-                                                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Ba-WO-eMo" userLabel="Upload Button">
+                                                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Ba-WO-eMo" userLabel="Upload Button">
                                                                 <rect key="frame" x="0.0" y="0.0" width="160" height="160"/>
                                                                 <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
                                                                 <connections>
@@ -104,7 +104,7 @@
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f5W-2N-1AL" userLabel="Bottom Left View">
                                                         <rect key="frame" x="0.0" y="0.0" width="160" height="160"/>
                                                         <subviews>
-                                                            <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Iwe-qb-BMe" userLabel="Upload Button">
+                                                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Iwe-qb-BMe" userLabel="Upload Button">
                                                                 <rect key="frame" x="0.0" y="0.0" width="160" height="160"/>
                                                                 <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
                                                                 <connections>
@@ -130,7 +130,7 @@
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mzw-ah-uyz" userLabel="Bottom Right View">
                                                         <rect key="frame" x="170" y="0.0" width="160" height="160"/>
                                                         <subviews>
-                                                            <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KKn-D0-jDj" userLabel="Upload Button">
+                                                            <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KKn-D0-jDj" userLabel="Upload Button">
                                                                 <rect key="frame" x="0.0" y="0.0" width="160" height="160"/>
                                                                 <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
                                                                 <connections>
@@ -167,16 +167,20 @@
                                     <constraint firstItem="uRh-Rz-u4Q" firstAttribute="height" secondItem="OKu-S0-k6l" secondAttribute="height" constant="-20" id="mTv-7l-hmD"/>
                                 </constraints>
                                 <connections>
-                                    <outletCollection property="pictureViews" destination="Sko-CO-rWI" collectionClass="NSMutableArray" id="Ugw-6Q-rMS"/>
-                                    <outletCollection property="pictureViews" destination="owa-P3-EBn" collectionClass="NSMutableArray" id="B3U-t9-2GQ"/>
-                                    <outletCollection property="pictureViews" destination="f5W-2N-1AL" collectionClass="NSMutableArray" id="wXJ-Xw-N02"/>
-                                    <outletCollection property="pictureViews" destination="mzw-ah-uyz" collectionClass="NSMutableArray" id="cXR-P7-2fI"/>
+                                    <outletCollection property="gridViews" destination="Sko-CO-rWI" collectionClass="NSMutableArray" id="Ugw-6Q-rMS"/>
+                                    <outletCollection property="gridViews" destination="owa-P3-EBn" collectionClass="NSMutableArray" id="B3U-t9-2GQ"/>
+                                    <outletCollection property="gridViews" destination="f5W-2N-1AL" collectionClass="NSMutableArray" id="wXJ-Xw-N02"/>
+                                    <outletCollection property="gridViews" destination="mzw-ah-uyz" collectionClass="NSMutableArray" id="cXR-P7-2fI"/>
+                                    <outletCollection property="imageViews" destination="Mpc-3I-kq9" collectionClass="NSMutableArray" id="ijq-Xi-1Dh"/>
+                                    <outletCollection property="imageViews" destination="em6-j3-8vP" collectionClass="NSMutableArray" id="a0E-f3-qHe"/>
+                                    <outletCollection property="imageViews" destination="yNj-m8-dEq" collectionClass="NSMutableArray" id="uDx-2c-q2D"/>
+                                    <outletCollection property="imageViews" destination="0tt-b0-IDl" collectionClass="NSMutableArray" id="ufV-ZY-NHT"/>
                                 </connections>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" translatesAutoresizingMaskIntoConstraints="NO" id="oe2-82-DLf">
                                 <rect key="frame" x="32" y="767" width="350" height="80"/>
                                 <subviews>
-                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VBr-Rc-iNp" userLabel="Layout 1">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VBr-Rc-iNp" userLabel="Layout 1">
                                         <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
                                         <gestureRecognizers/>
                                         <constraints>
@@ -188,7 +192,7 @@
                                             <action selector="didTapLayoutButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="YvO-Tg-1IW"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jfc-u6-nc9" userLabel="Layout 2">
+                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jfc-u6-nc9" userLabel="Layout 2">
                                         <rect key="frame" x="135" y="0.0" width="80" height="80"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="80" id="RPh-eE-CWT"/>
@@ -199,7 +203,7 @@
                                             <action selector="didTapLayoutButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1mY-VJ-4Kn"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" tag="3" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tpe-L4-lXh" userLabel="Layout 3">
+                                    <button opaque="NO" tag="2" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tpe-L4-lXh" userLabel="Layout 3">
                                         <rect key="frame" x="270" y="0.0" width="80" height="80"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="80" id="7c1-xA-6lf"/>
@@ -213,7 +217,7 @@
                                 </subviews>
                                 <variation key="heightClass=compact" axis="vertical"/>
                             </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="Kto-oe-5xi" userLabel="Swipe up Stack View">
+                            <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="Kto-oe-5xi" userLabel="Swipe up Stack View">
                                 <rect key="frame" x="127.00000000000001" y="220" width="160.33333333333337" height="50"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="^" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KZr-hc-0FA">
@@ -235,7 +239,7 @@
                                     </constraint>
                                 </constraints>
                             </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="qz4-Re-4zO" userLabel="Swipe left Stack View">
+                            <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="qz4-Re-4zO" userLabel="Swipe left Stack View">
                                 <rect key="frame" x="44" y="177" width="324" height="60"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fMF-32-zaa">
@@ -338,6 +342,7 @@
                             <outletCollection property="gestureRecognizers" destination="PeI-aF-Qty" appends="YES" id="MRU-q1-R8q"/>
                             <outletCollection property="gestureRecognizers" destination="pZ1-Er-IHR" appends="YES" id="Paf-qd-aXA"/>
                             <outletCollection property="gestureRecognizers" destination="68Z-Jr-2bx" appends="YES" id="T1a-zm-DiG"/>
+                            <outletCollection property="gestureRecognizers" destination="81G-K6-lfj" appends="YES" id="HNa-6F-H4J"/>
                         </connections>
                     </view>
                     <connections>
@@ -345,10 +350,8 @@
                         <outletCollection property="layoutButtons" destination="VBr-Rc-iNp" collectionClass="NSMutableArray" id="kKL-of-a5K"/>
                         <outletCollection property="layoutButtons" destination="Jfc-u6-nc9" collectionClass="NSMutableArray" id="FVJ-hJ-8Ei"/>
                         <outletCollection property="layoutButtons" destination="tpe-L4-lXh" collectionClass="NSMutableArray" id="XWC-gl-rb1"/>
-                        <outletCollection property="gridImageViews" destination="Mpc-3I-kq9" collectionClass="NSMutableArray" id="y4w-Id-FgN"/>
-                        <outletCollection property="gridImageViews" destination="em6-j3-8vP" collectionClass="NSMutableArray" id="ZgC-fK-fao"/>
-                        <outletCollection property="gridImageViews" destination="yNj-m8-dEq" collectionClass="NSMutableArray" id="Z4M-ie-DgL"/>
-                        <outletCollection property="gridImageViews" destination="0tt-b0-IDl" collectionClass="NSMutableArray" id="uvw-EQ-TsD"/>
+                        <outletCollection property="swipeStackViews" destination="Kto-oe-5xi" collectionClass="NSMutableArray" id="4Qx-2w-spI"/>
+                        <outletCollection property="swipeStackViews" destination="qz4-Re-4zO" collectionClass="NSMutableArray" id="W3Y-dH-HSU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -369,6 +372,11 @@
                         <action selector="swipeForShare:" destination="BYZ-38-t0r" id="OdH-7p-bos"/>
                     </connections>
                 </swipeGestureRecognizer>
+                <tapGestureRecognizer numberOfTapsRequired="2" id="81G-K6-lfj" userLabel="Double Tap Gesture Recognizer">
+                    <connections>
+                        <action selector="didDoubleTapForChangeColor:" destination="BYZ-38-t0r" id="MbB-rX-OVV"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="50.223214285714285" y="26.086956521739133"/>
         </scene>

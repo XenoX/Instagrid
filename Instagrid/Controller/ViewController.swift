@@ -3,18 +3,28 @@ import UIKit
 class ViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
 
     @IBOutlet var layoutButtons: [UIButton]!
-    @IBOutlet var gridImageViews: [UIImageView]!
     @IBOutlet weak var imageGridView: ImageGridView!
+    @IBOutlet var swipeStackViews: [UIStackView]!
 
-    var imagePicker = UIImagePickerController()
+    let imagePicker = UIImagePickerController()
 
-    // MARK: Interface Builder Actions
+    // MARK: - Interface Builder Actions
     @IBAction func swipeForShare(_ sender: UISwipeGestureRecognizer) {
-        if (UIDevice.current.orientation.isLandscape && sender.direction == .left) ||
-            (UIDevice.current.orientation.isPortrait && sender.direction == .up) {
-            let share = UIActivityViewController(activityItems: [imageGridView.image! as Any], applicationActivities: nil)
-            present(share, animated: true)
+        if (UIDevice.current.orientation.isLandscape && sender.direction != .left) ||
+            (UIDevice.current.orientation.isPortrait && sender.direction != .up) {
+            return
         }
+
+        guard imageGridView.isAllRequiredImageSet() else {
+            let shareAlert = UIAlertController(title: "You need to set all image before share!", message: "", preferredStyle: .alert)
+            shareAlert.addAction(UIAlertAction(title: "Ok 👍", style: .default, handler: nil))
+            present(shareAlert, animated: true)
+
+            return
+        }
+
+        let shareActivity = UIActivityViewController(activityItems: [imageGridView.image! as Any], applicationActivities: nil)
+        present(shareActivity, animated: true)
     }
 
     @IBAction func didLongPressLayoutButton(_ sender: UILongPressGestureRecognizer) {
@@ -22,19 +32,13 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
             return
         }
 
-        resetImageViews()
+        imageGridView.resetImageViews()
     }
 
     @IBAction func didTapUploadButton(_ sender: UIButton) {
-        let imageView = gridImageViews[sender.tag - 1]
-
-        if imageView.contentMode == .scaleToFill {
-            removeImageFromImageView(imageView)
-
+        guard imageGridView.canUploadImage(button: sender) else {
             return
         }
-
-        imageGridView.imageTarget = sender.tag - 1
 
         self.present(imagePicker, animated: true)
     }
@@ -48,7 +52,11 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         imageGridView.setLayout(sender.tag)
     }
 
-    // MARK: Public functions
+    @IBAction func didDoubleTapForChangeColor(_ sender: UITapGestureRecognizer) {
+        imageGridView.changeColor()
+    }
+
+    // MARK: - Public functions
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -61,25 +69,15 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         _ picker: UIImagePickerController,
         didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
-            gridImageViews[imageGridView.imageTarget].image = image
-            gridImageViews[imageGridView.imageTarget].contentMode = .scaleAspectFill
+            imageGridView.setImage(image)
         }
+
+        updateSwipeLabel()
 
         self.dismiss(animated: true, completion: nil)
     }
 
-    // MARK: Private functions
-    private func resetImageViews() {
-        gridImageViews.forEach { imageView in
-            removeImageFromImageView(imageView)
-        }
-    }
-
-    private func removeImageFromImageView(_ imageView: UIImageView) {
-        imageView.contentMode = .center
-        imageView.image = UIImage.init(named: "Plus")
-    }
-
+    // MARK: - Private functions
     private func resetLayoutButtons() {
         layoutButtons.forEach { layoutButton in
             layoutButton.isSelected = false
@@ -90,5 +88,19 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     private func selectLayoutButton(_ layoutButton: UIButton) {
         layoutButton.isSelected = true
         layoutButton.setImage(UIImage.init(named: "Selected"), for: .selected)
+    }
+
+    private func updateSwipeLabel() {
+        if imageGridView.isAllRequiredImageSet() {
+            swipeStackViews.forEach { swipeStackView in
+                swipeStackView.isHidden = false
+            }
+
+            return
+        }
+
+        swipeStackViews.forEach { swipeStackView in
+            swipeStackView.isHidden = true
+        }
     }
 }
