@@ -47,13 +47,20 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         guard sender.isSelected == false else { return }
 
         resetLayoutButtons()
-        selectLayoutButton(sender)
-        
-        imageGridView.setLayout(sender.tag)
+
+        sender.isSelected = true
+        sender.setImage(UIImage.init(named: "Selected"), for: .selected)
+
+        imageGridView.layoutNumber = sender.tag
     }
 
     @IBAction func didDoubleTapForChangeColor(_ sender: UITapGestureRecognizer) {
-        imageGridView.changeColor()
+        imageGridView.backgroundColor = UIColor(
+            red: .random(in: 0...1),
+            green: .random(in: 0...1),
+            blue: .random(in: 0...1),
+            alpha: 1.0
+        )
     }
 
     // MARK: - Public functions
@@ -83,11 +90,6 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
             layoutButton.isSelected = false
             layoutButton.setImage(nil, for: .normal)
         }
-    }
-
-    private func selectLayoutButton(_ layoutButton: UIButton) {
-        layoutButton.isSelected = true
-        layoutButton.setImage(UIImage.init(named: "Selected"), for: .selected)
     }
 
     private func updateSwipeLabel() {
