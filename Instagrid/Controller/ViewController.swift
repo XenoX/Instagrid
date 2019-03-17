@@ -8,11 +8,11 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
 
     var imagePicker = UIImagePickerController()
 
+    // MARK: Interface Builder Actions
     @IBAction func swipeForShare(_ sender: UISwipeGestureRecognizer) {
         if (UIDevice.current.orientation.isLandscape && sender.direction == .left) ||
-            (UIDevice.current.orientation.isPortrait && sender.direction == .up)
-        {
-            let share = UIActivityViewController(activityItems: [imageGridView.image!], applicationActivities: nil)
+            (UIDevice.current.orientation.isPortrait && sender.direction == .up) {
+            let share = UIActivityViewController(activityItems: [imageGridView.image! as Any], applicationActivities: nil)
             present(share, animated: true)
         }
     }
@@ -48,6 +48,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         imageGridView.setLayout(sender.tag)
     }
 
+    // MARK: Public functions
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -56,6 +57,18 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         imagePicker.allowsEditing = false
     }
 
+    func imagePickerController(
+        _ picker: UIImagePickerController,
+        didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            gridImageViews[imageGridView.imageTarget].image = image
+            gridImageViews[imageGridView.imageTarget].contentMode = .scaleAspectFill
+        }
+
+        self.dismiss(animated: true, completion: nil)
+    }
+
+    // MARK: Private functions
     private func resetImageViews() {
         gridImageViews.forEach { imageView in
             removeImageFromImageView(imageView)
@@ -77,14 +90,5 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     private func selectLayoutButton(_ layoutButton: UIButton) {
         layoutButton.isSelected = true
         layoutButton.setImage(UIImage.init(named: "Selected"), for: .selected)
-    }
-
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
-            gridImageViews[imageGridView.imageTarget].image = image
-            gridImageViews[imageGridView.imageTarget].contentMode = .scaleAspectFill
-        }
-
-        self.dismiss(animated: true, completion: nil)
     }
 }
