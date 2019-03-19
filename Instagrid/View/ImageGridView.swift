@@ -47,7 +47,8 @@ class ImageGridView: UIView {
     }
 
     public func isAllRequiredImageSet() -> Bool {
-        for imageNumber in imageNumbersByLayout[layoutNumber] where imageViews[imageNumber].contentMode != .scaleAspectFill {
+        for imageNumber in imageNumbersByLayout[layoutNumber]
+            where imageViews[imageNumber].contentMode != .scaleAspectFill {
             return false
         }
 
@@ -55,9 +56,7 @@ class ImageGridView: UIView {
     }
 
     public func resetImageViews() {
-        imageViews.forEach { imageView in
-            resetImageView(imageView)
-        }
+        imageViews.forEach({ resetImageView($0) })
     }
 
     // MARK: - Private functions
@@ -67,9 +66,7 @@ class ImageGridView: UIView {
     }
 
     private func setLayout(_ number: Int) {
-        gridViews.forEach { view in
-            view.isHidden = false
-        }
+        gridViews.forEach({ $0.isHidden = false })
 
         switch number {
         case 0:

@@ -16,14 +16,21 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         }
 
         guard imageGridView.isAllRequiredImageSet() else {
-            let shareAlert = UIAlertController(title: "You need to set all image before share!", message: "", preferredStyle: .alert)
+            let shareAlert = UIAlertController(
+                title: "You need to set all image before share!",
+                message: "",
+                preferredStyle: .alert
+            )
             shareAlert.addAction(UIAlertAction(title: "Ok 👍", style: .default, handler: nil))
             present(shareAlert, animated: true)
 
             return
         }
 
-        let shareActivity = UIActivityViewController(activityItems: [imageGridView.image! as Any], applicationActivities: nil)
+        let shareActivity = UIActivityViewController(
+            activityItems: [imageGridView.image! as Any],
+            applicationActivities: nil
+        )
         present(shareActivity, animated: true)
     }
 
@@ -74,7 +81,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
 
     func imagePickerController(
         _ picker: UIImagePickerController,
-        didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
         if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
             imageGridView.setImage(image)
         }
@@ -86,23 +93,13 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
 
     // MARK: - Private functions
     private func resetLayoutButtons() {
-        layoutButtons.forEach { layoutButton in
-            layoutButton.isSelected = false
-            layoutButton.setImage(nil, for: .normal)
-        }
+        layoutButtons.forEach({
+            $0.isSelected = false
+            $0.setImage(nil, for: .normal)
+        })
     }
 
     private func updateSwipeLabel() {
-        if imageGridView.isAllRequiredImageSet() {
-            swipeStackViews.forEach { swipeStackView in
-                swipeStackView.isHidden = false
-            }
-
-            return
-        }
-
-        swipeStackViews.forEach { swipeStackView in
-            swipeStackView.isHidden = true
-        }
+        swipeStackViews.forEach({ $0.isHidden = !imageGridView.isAllRequiredImageSet() })
     }
 }
